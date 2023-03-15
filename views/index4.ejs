@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    h1
+    {
+        text-align: center;
+        color:darkgoldenrod;
+    }
+    /* a{
+        color: hotpink;
+        font-weight: bold;
+        
+    } */
+    
+     #link
+     {
+
+        width:fit-content;
+        margin: auto;
+     }
+     #link1
+     {
+        text-align: center;
+        padding: 7px;
+        text-decoration: none;
+        color:blueviolet;
+        border-radius: 20px;
+        border:3px solid blueviolet;
+        font-weight: bold;
+     }
+     #link2
+     {
+        text-align: center;
+        text-decoration: none;
+    padding: 7px;
+        color: plum;
+        border-radius: 20px;
+        border:3px solid  plum;
+     }
+     th.a
+     {
+        color: black;
+     }
+      
+    table
+    {
+        margin-bottom: 20px;
+        border-collapse: collapse;
+        background-color:lightcoral;
+    }
+</style>
+<body>
+
+<H1>Data from database</H1>
+<table border = '4' align="center">
+    <%
+    
+        if(order == 'asc')
+        {
+            order = 'desc';
+        }
+        else
+        {
+            order = 'asc';
+        }
+    %>
+    <tr>
+        <th><a href = '/page?no=1&sort=sd_id&order=<%=order%>'>Student_Id</a> </th>
+        <th><a href = '/page?no=1&sort=sd_fname&order=<%=order%>'>Student_Fname</a></th>
+        <th><a href = '/page?no=1&sort=sd_lname&order=<%=order%>'>Student_Lname</a></th>
+        <th><a href = '/page?no=1&sort=sd_email&order=<%=order%>'>Student_Email</a></th>
+        <th><a href = '/page?no=1&sort=sd_contact&order=<%=order%>'>Student_Contact</a></th>
+        <th><a href = '/page?no=1&sort=sd_collegeid&order=<%=order%>'>Student_CollegeId</a></th>
+        <th><a href = '/page?no=1&sort=sd_city&order=<%=order%>'>Student_City</a></th>
+        <th><a href = '/page?no=1&sort=sd_dob&order=<%=order%>'>Student_DOB</a></th>
+        </tr>
+
+   <% for(i = 0;i<data.length;i++) { %>
+         <tr>
+            <td><%=data[i].sd_id %></td>
+            <td><%=data[i].sd_fname %></td>
+            <td><%=data[i].sd_lname %></td>
+            <td><%=data[i].sd_email %></td>
+            <td><%=data[i].sd_contact %></td>
+            <td><%=data[i].sd_collegeid %></td>
+            <td><%=data[i].sd_city %></td>
+            <td><%=data[i].sd_dob %></td>
+         </tr>
+    <% } %>
+</table>
+
+
+
+<%
+    
+if(order == 'asc')
+{
+    order = 'desc';
+}
+else
+{
+    order = 'asc';
+}
+%>
+
+  
+<div id = 'link'>
+
+   <% for(i=1;i<=div;i++) { %>
+    <!-- <a href = '/body/<%=i%>'><%=i%></a> -->
+
+   <% if(i==v1) { %>
+    <a href = '/page?no=<%=i%>&sort=<%=sort%>&order=<%=order %> ' id ='link1'><%=i%></a>
+   <% }else { %>
+    <a href = '/page?no=<%=i%>&sort=<%=sort%>&order=<%=order %>' id="link2"><%=i%></a>
+   <% } %>
+   
+   <% } %>
+</div>
+</body>
+</html>
+
